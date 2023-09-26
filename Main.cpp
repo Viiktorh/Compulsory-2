@@ -14,17 +14,17 @@ int main() {
 
     validateIntInput();
     //Asks for another number if the number does not correspond to one of the given options.
-    while (input1 < 0 || input1 >= 4) {
+    while (intInput < 0 || intInput >= 4) {
         cout << "Please choose a valid option: ";
         validateIntInput();
     }
 
     int result;
-    switch (input1) {
+    switch (intInput) {
     case 1:
         cout << "Decide the factorial: ";
         validateIntInput();
-        result = factorial(input1);
+        result = factorial(intInput);
         cout << result;
         break;
     case 2:

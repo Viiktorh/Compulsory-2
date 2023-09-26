@@ -2,22 +2,22 @@
 #include <limits>
 using namespace std;
 
-int mathArray[4] = { 0,0,0,0 };
+int mathArray1[4] = { 0,0,0,0 };
 int mathArray2[4] = { 0,0,0,0 };
-int input1 = 0;
+int intInput = 0;
 
 ///<summary>
 ///This function checks if the cinput is an integer, clears the cinput and asks to retype it if not an integer.
-///Using this means you will use validateInput(); and input1 as your integer to check for valid input. 
+///Using this means you will use validateInput(); and intInput as your integer to check for valid input. 
 ///This approach needs of the limits library.
 ///</summary>
 void validateIntInput() {
-	cin >> input1;
+	cin >> intInput;
 	while (!cin.good()) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		cout << "Enter a valid number.";
-		cin >> input1;
+		cin >> intInput;
 	}
 }
 ///<summary>
@@ -34,20 +34,20 @@ void multiplyArrays() {
 	for (int i = 0; i < 4; i++) {
 		cout << "Decide the number n * (x)^" << 3 - i << " ";
 		validateIntInput();
-		mathArray[i] = input1;
+		mathArray1[i] = intInput;
 
 	}
 	cout << "Second function.\n\n";
 	for (int i = 0; i < 4; i++) {
 		cout << "Decide the number n * (x)^" << 3 - i << " ";
 		validateIntInput();
-		mathArray2[i] = input1;
+		mathArray2[i] = intInput;
 
 	}
 	//multiplies each value of the first array with each value of the second array and adds the result into the multiplyArray position of the appropriate polynomial
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			product = mathArray[i] * mathArray2[j];
+			product = mathArray1[i] * mathArray2[j];
 			multiplyArray[j + i] += product;
 		}
 
@@ -70,17 +70,17 @@ void addArrays() {
 	for (int i = 0; i < 4; i++) {
 		cout << "Decide the number n * (x)^" << 3 - i << " ";
 		validateIntInput();
-		mathArray[i] = input1;
+		mathArray1[i] = intInput;
 	}
 	cout << "Second function.\n\n";
 	for (int i = 0; i < 4; i++) {
 		cout << "Decide the number n * (x)^" << 3 - i << " ";
 		validateIntInput();
-		mathArray2[i] = input1;
+		mathArray2[i] = intInput;
 	}
 	//adds the two mathArrays and their result into the additionArray
 	for (int i = 0; i < 4; i++) {
-		additionArray[i] = mathArray[i] + mathArray2[i];
+		additionArray[i] = mathArray1[i] + mathArray2[i];
 	}
 	//prints out the addition result with an exception for the last value which does not have an x or a polynomial higher than 1
 	for (int i = 0; i < 3; i++) {
@@ -97,8 +97,8 @@ void derivateArrays() {
 	for (int i = 0; i < 4; i++) {
 		cout << "Decide the number n * (x)^" << 3 - i << " ";
 		validateIntInput();
-		mathArray[i] = input1;
-		derivationArray[i] = (mathArray[i] * (3 - i));
+		mathArray1[i] = intInput;
+		derivationArray[i] = (mathArray1[i] * (3 - i));
 	}
 	//written seperately as they all want to show seperate things
 	cout << derivationArray[0] << "x^2 + ";
@@ -119,7 +119,7 @@ int factorial(int n) {
 	while (n <= 0) {
 		cout << "Choose a whole number higher than 0: ";
 		validateIntInput();
-		n = input1;
+		n = intInput;
 	}
 	if (n == 1 || n == 0) {
 		return 1;
@@ -131,6 +131,7 @@ int factorial(int n) {
 }
 
 /// <summary>
+/// Clears the console.
 /// Polynomial math with 3rd degree polynomials, addition, derivation and multiplication.
 /// Calls either addArray(); derivateArray(); or multiplyArrays(); depending on user choice.
 /// </summary>
@@ -139,14 +140,14 @@ void polynomialMenu() {
 	cout << "What would you like to do?\n\n";
 	cout << "1. Add two functions with 3 polynomials together\n";
 	cout << "2. Derivate a polynomial\n";
-	cout << "3. Decide and multiply 2 functions with 3 polynomials\n";
+	cout << "3. Decide and multiply 2 f unctions with 3 polynomials\n";
 
 	validateIntInput();
-	while (input1 < 1 || input1 >= 4) {
+	while (intInput < 1 || intInput >= 4) {
 		cout << "Please choose a valid option: ";
 		validateIntInput();
 	}
-	switch (input1) {
+	switch (intInput) {
 	case 1:
 		addArrays();
 		break;
@@ -180,11 +181,11 @@ void simpleCalculator() {
 
 	//The "switch" for the simple calculator. Asks for another number if the number does not correspond to a valid option.
 	validateIntInput();
-	simpleCalcChoice = input1;
+	simpleCalcChoice = intInput;
 	while (simpleCalcChoice < 1 || simpleCalcChoice > 5) {
 		cout << "Please choose a valid option: ";
 		validateIntInput();
-		simpleCalcChoice = input1;
+		simpleCalcChoice = intInput;
 	}
 
 	if (simpleCalcChoice == 5) {
@@ -194,10 +195,10 @@ void simpleCalculator() {
 	//Asks for the two numbers used for the next operation. 
 	cout << "Choose the first number: \n";
 	validateIntInput();
-	number1 = input1;
+	number1 = intInput;
 	cout << "Choose the second number: \n";
 	validateIntInput();
-	number2 = input1;
+	number2 = intInput;
 
 	//Prints the result based on previous choice and number inputs.
 	switch (simpleCalcChoice) {
